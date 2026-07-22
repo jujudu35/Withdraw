@@ -1,0 +1,36 @@
+name: BetterWithdraw
+version: 1.0.0
+main: net.betterwithdraw.BetterWithdraw
+api-version: '1.21'
+author: BetterWithdrawTeam
+description: Plugin de chèques bancaires empilables sans UUID.
+depend:
+  - Vault
+softdepend:
+  - PlaceholderAPI
+
+commands:
+  withdraw:
+    description: Créer un chèque bancaire.
+    aliases: [chèque, cheque]
+    permission: betterwithdraw.use
+    usage: /withdraw <montant|all>
+  depositall:
+    description: Déposer tous les chèques de votre inventaire dans votre compte.
+    aliases: [depotall]
+    permission: betterwithdraw.depositall
+    usage: /depositall
+
+permissions:
+  betterwithdraw.use:
+    description: Permet de retirer de l'argent sous forme de chèque.
+    default: true
+  betterwithdraw.give:
+    description: Permet de donner un chèque directement à un joueur.
+    default: op
+  betterwithdraw.reload:
+    description: Permet de recharger la configuration du plugin.
+    default: op
+  betterwithdraw.depositall:
+    description: Permet de déposer tous les chèques d'un coup.
+    default: true

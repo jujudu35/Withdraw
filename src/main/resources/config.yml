@@ -1,0 +1,54 @@
+# ====================================================== #
+#               Configuration BetterWithdraw             #
+# ====================================================== #
+
+# Configuration générale
+settings:
+  min-withdraw: 10.0
+  max-withdraw: 1000000.0
+
+# Configuration de l'item du chèque
+check-item:
+  material: PAPER
+  custom-model-data: 0
+  glow: true
+  name: "&e&lChèque de &a%amount%$"
+  lore:
+    - "&7Valide pour un retrait direct."
+    - ""
+    - "&fValeur : &a%amount%$"
+    - "&7Faites un &eClic-Droit &7pour encaisser."
+
+# Effets sonores (Sons Bukkit/Paper)
+sounds:
+  withdraw-success:
+    enabled: true
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    volume: 1.0
+    pitch: 1.2
+  deposit-success:
+    enabled: true
+    sound: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.5
+  error:
+    enabled: true
+    sound: ENTITY_VILLAGER_NO
+    volume: 1.0
+    pitch: 1.0
+
+# Messages personnalisables (Supporte la coloration &)
+messages:
+  prefix: "&8[&eBetterWithdraw&8] "
+  no-permission: "&cVous n'avez pas la permission d'utiliser cette commande."
+  must-be-player: "&cSeul un joueur peut exécuter cette commande."
+  invalid-amount: "&cVeuillez entrer un montant valide supérieur à %min%$."
+  not-enough-money: "&cVous n'avez pas assez d'argent sur votre compte."
+  withdraw-success: "&aVous avez créé un chèque de &e%amount%$&a."
+  deposit-success: "&aVous avez encaisse un chèque de &e%amount%$&a."
+  depositall-success: "&aVous avez déposé &e%count% &achèque(s) pour un total de &e%amount%$&a."
+  no-checks-found: "&cAucun chèque trouvé dans votre inventaire."
+  reload-success: "&aLa configuration a été rechargée avec succès."
+  player-not-found: "&cJoueur introuvable."
+  give-success-sender: "&aVous avez donné un chèque de &e%amount%$ &aà &e%player%&a."
+  give-success-receiver: "&aVous avez reçu un chèque de &e%amount%$&a."
