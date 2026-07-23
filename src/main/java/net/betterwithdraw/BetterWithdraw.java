@@ -11,43 +11,40 @@ public class BetterWithdraw extends JavaPlugin {
     private Economy economy;
     private CheckManager checkManager;
 
-   @Override
+    @Override
     public void onEnable() {
         instance = this;
 
-        // 1. Sauvegarde de la config par défaut
+        // Sauvegarde de la configuration
         saveDefaultConfig();
 
-        // 2. Initialisation de Vault
+        // Initialisation de Vault
         if (!setupEconomy()) {
             getLogger().severe("Vault ou un plugin d'économie est introuvable ! Désactivation de BetterWithdraw.");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
-        // 3. Initialisation du CheckManager
-        this.checkManager = new CheckManager(this);
+        // Initialisation du gestionnaire de chèques
+        checkManager = new CheckManager(this);
 
-        // 4. Enregistrement des événements et commandes
+        // Enregistrement des événements
         getServer().getPluginManager().registerEvents(new CheckListener(this), this);
 
+        // Commandes
         WithdrawCommand commandExecutor = new WithdrawCommand(this);
+
         if (getCommand("withdraw") != null) {
             getCommand("withdraw").setExecutor(commandExecutor);
             getCommand("withdraw").setTabCompleter(commandExecutor);
         }
+
         if (getCommand("depositall") != null) {
             getCommand("depositall").setExecutor(commandExecutor);
             getCommand("depositall").setTabCompleter(commandExecutor);
         }
 
-        getLogger().info("BetterWithdraw v1.0 activé avec succès ! (Support Vault OK)");
-    }
-
-        // 3. Initialisation du CheckManager
-        this.checkManager = new CheckManager(this);
-
-        getLogger().info("BetterWithdraw v1.0 activé avec succès ! (Support Vault OK)");
+        getLogger().info("BetterWithdraw v1.0 activé avec succès !");
     }
 
     @Override
@@ -59,10 +56,14 @@ public class BetterWithdraw extends JavaPlugin {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+
+        RegisteredServiceProvider<Economy> rsp =
+                getServer().getServicesManager().getRegistration(Economy.class);
+
         if (rsp == null) {
             return false;
         }
+
         economy = rsp.getProvider();
         return economy != null;
     }
